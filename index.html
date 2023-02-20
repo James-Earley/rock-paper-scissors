@@ -26,7 +26,7 @@
                             (computerSelection === 'scissors' && playerSelection === 'paper') ||
                             (computerSelection === 'paper' && playerSelection === 'rock')) {
                             compScore++
-                            return console.log("Computer wins");
+                            return console.log("Computer Wins");
                 } else {
                     playerScore++
                     return console.log("Player Wins");
@@ -37,7 +37,7 @@
             for (let i = 0; i < 5; i++) {
             const playerSelectionfirst = window.prompt("Rock, Paper or Scissors?");
             const playerSelection = playerSelectionfirst.toLowerCase();
-            console.log("The player selected: " + playerSelection)
+            console.log("The player input: " + playerSelection)
             const computerSelection = getComputerChoice();
             let outcome = playRound(computerSelection, playerSelection);
             }
