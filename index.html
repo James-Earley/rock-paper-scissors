@@ -20,17 +20,13 @@
         
         function playRound(computerSelection, playerSelection) {
 
-                if (computerSelection === playerSelection.toLowerCase()){
+                if (computerSelection === playerSelection ){
                     return console.log("Draw!");
-                } else if (computerSelection == 'rock' && playerSelection.toLowerCase() == 'scissors') {
-                    compScore++
-                    return  console.log("Computer wins");
-                } else if (computerSelection == 'scissors' && playerSelection.toLowerCase() == 'paper') {
-                    compScore++
-                    return console.log("Computer wins");
-                } else if (computerSelection == 'paper' && playerSelection.toLowerCase() == 'rock') {
-                    compScore++
-                    return console.log("Computer wins");
+                } else if  ((computerSelection === 'rock' && playerSelection === 'scissors') ||
+                            (computerSelection === 'scissors' && playerSelection === 'paper') ||
+                            (computerSelection === 'paper' && playerSelection === 'rock')) {
+                            compScore++
+                            return console.log("Computer wins");
                 } else {
                     playerScore++
                     return console.log("Player Wins");
@@ -39,7 +35,8 @@
 
         function game() {
             for (let i = 0; i < 5; i++) {
-            const playerSelection = window.prompt("Rock, Paper or Scissors?");
+            const playerSelectionfirst = window.prompt("Rock, Paper or Scissors?");
+            const playerSelection = playerSelectionfirst.toLowerCase();
             const computerSelection = getComputerChoice();
             let outcome = playRound(computerSelection, playerSelection);
             }
