@@ -7,12 +7,40 @@
 <body>
     <script>
         function getComputerChoice() {
-            const arrayChoices = ["Rock", "Paper", "Scissors"];
+            const arrayChoices = ["rock", "paper", "scissors"];
             const randomIndex = Math.floor(Math.random() * arrayChoices.length);
             const compChoice = arrayChoices[randomIndex];
             console.log(compChoice);
+            return compChoice;
         }
-        getComputerChoice();
+        
+        function playRound(computerSelection, playerSelection) {
+
+                if (computerSelection === playerSelection.toLowerCase()){
+                    return console.log("Draw!");
+                } else if (computerSelection == 'rock' && playerSelection.toLowerCase() == 'scissors') {
+                    return  console.log("Computer wins");
+                } else if (computerSelection == 'scissors' && playerSelection.toLowerCase() == 'paper') {
+                    return console.log("Computer wins");
+                } else if (computerSelection == 'paper' && playerSelection.toLowerCase() == 'rock') {
+                    return console.log("Computer wins");
+                } else {
+                    return console.log("Player Wins");
+                }
+        }
+
+        function game() {
+            
+            for (let i = 0; i < 5; i++) {
+            
+            }
+        }
+        
+        const playerSelection = 'Rock';
+        const computerSelection = getComputerChoice();
+        console.log(playRound(computerSelection, playerSelection));
+        
+
     </script>
 </body>
 </html>
