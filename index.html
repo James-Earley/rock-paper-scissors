@@ -14,7 +14,7 @@
             const arrayChoices = ["rock", "paper", "scissors"];
             const randomIndex = Math.floor(Math.random() * arrayChoices.length);
             const compChoice = arrayChoices[randomIndex];
-            console.log(compChoice);
+            console.log("The computer selects: " + compChoice);
             return compChoice;
         }
         
@@ -37,6 +37,7 @@
             for (let i = 0; i < 5; i++) {
             const playerSelectionfirst = window.prompt("Rock, Paper or Scissors?");
             const playerSelection = playerSelectionfirst.toLowerCase();
+            console.log("The player selected: " + playerSelection)
             const computerSelection = getComputerChoice();
             let outcome = playRound(computerSelection, playerSelection);
             }
