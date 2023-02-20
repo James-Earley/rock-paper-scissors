@@ -6,6 +6,10 @@
 </head>
 <body>
     <script>
+
+        let compScore = 0;
+        let playerScore = 0;
+
         function getComputerChoice() {
             const arrayChoices = ["rock", "paper", "scissors"];
             const randomIndex = Math.floor(Math.random() * arrayChoices.length);
@@ -19,12 +23,16 @@
                 if (computerSelection === playerSelection.toLowerCase()){
                     return console.log("Draw!");
                 } else if (computerSelection == 'rock' && playerSelection.toLowerCase() == 'scissors') {
+                    compScore++
                     return  console.log("Computer wins");
                 } else if (computerSelection == 'scissors' && playerSelection.toLowerCase() == 'paper') {
+                    compScore++
                     return console.log("Computer wins");
                 } else if (computerSelection == 'paper' && playerSelection.toLowerCase() == 'rock') {
+                    compScore++
                     return console.log("Computer wins");
                 } else {
+                    playerScore++
                     return console.log("Player Wins");
                 }
         }
@@ -33,12 +41,22 @@
             for (let i = 0; i < 5; i++) {
             const playerSelection = window.prompt("Rock, Paper or Scissors?");
             const computerSelection = getComputerChoice();
-            console.log(playRound(computerSelection, playerSelection));
+            let outcome = playRound(computerSelection, playerSelection);
             }
+            console.log(gameOutcome(playerScore, compScore));
         }
         
-       
-       
+
+        function gameOutcome(playerScore, compScore) {
+            if (playerScore > compScore) {
+                return "Player wins overall!"
+            } else {
+                return "Computer Wins overall!"
+            }
+
+        }
+
+
         game();
 
     </script>
