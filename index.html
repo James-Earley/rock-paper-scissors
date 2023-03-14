@@ -42,16 +42,7 @@
 
         }
 
-        function game() {
-            for (let i = 0; i < 5; i++) {
-            const playerSelectionfirst = window.prompt("Rock, Paper or Scissors?");
-            const playerSelection = playerSelectionfirst.toLowerCase();
-            console.log("The player input: " + playerSelection)
-            const computerSelection = getComputerChoice();
-            let outcome = playRound(computerSelection, playerSelection);
-            }
-            console.log(gameOutcome(playerScore, compScore));
-        }
+        
         
         game();
 
