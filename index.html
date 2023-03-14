@@ -33,6 +33,15 @@
                 }
         }
 
+        function gameOutcome(playerScore, compScore) {
+            if (playerScore > compScore) {
+                return "Player wins overall!"
+            } else {
+                return "Computer Wins overall!"
+            }
+
+        }
+
         function game() {
             for (let i = 0; i < 5; i++) {
             const playerSelectionfirst = window.prompt("Rock, Paper or Scissors?");
@@ -44,17 +53,6 @@
             console.log(gameOutcome(playerScore, compScore));
         }
         
-
-        function gameOutcome(playerScore, compScore) {
-            if (playerScore > compScore) {
-                return "Player wins overall!"
-            } else {
-                return "Computer Wins overall!"
-            }
-
-        }
-
-
         game();
 
     </script>
