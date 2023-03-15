@@ -16,19 +16,22 @@
         </div>
     <script>
 
+    const container = document.getElementById("content");
+
     const buttons = document.querySelectorAll('.buttons button');
 
     buttons.forEach(button => {
     button.addEventListener('click', event => {
         const playerSelectionButton = event.target.id;
         console.log(playerSelectionButton);
-        playRound(playerSelectionButton, getComputerChoice());
-        
+        playRound(playerSelectionButton, getComputerChoice()); 
+        const newDiv = document.createElement('div')
+        newDiv.textContent = playerSelectionButton;
+        container.appendChild(newDiv);
         });
     });
 
-        let compScore = 0;
-        let playerScore = 0;
+    
 
         function getComputerChoice() {
             const arrayChoices = ["rock", "paper", "scissors"];
@@ -38,8 +41,10 @@
             return compChoice;
         }
         
-        function playRound(computerSelection, playerSelection) {
-               
+        let compScore = 0;
+        let playerScore = 0;
+
+        function playRound(playerSelection, computerSelection) {  
                 if (computerSelection === playerSelection ){
                     return console.log("Draw!");
                 } else if  ((computerSelection === 'rock' && playerSelection === 'scissors') ||
@@ -55,7 +60,7 @@
 
         function gameOutcome(playerScore, compScore) {
             if (playerScore > compScore) {
-                return "Player wins overall!"
+                return "Player Wins overall!"
             } else {
                 return "Computer Wins overall!"
             }
