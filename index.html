@@ -8,13 +8,24 @@
     <div class="container">
         <div id="content">
                 <div class="buttons">
-                  <button>Rock</button>
-                  <button>Paper</button>
-                  <button>Scissors</button>
+                  <button id="rock">Rock</button>
+                  <button id="paper">Paper</button>
+                  <button id="scissors">Scissors</button>
                 </div>
               </div>
         </div>
     <script>
+
+    const buttons = document.querySelectorAll('.buttons button');
+
+    buttons.forEach(button => {
+    button.addEventListener('click', event => {
+        const playerSelectionButton = event.target.id;
+        console.log(playerSelectionButton);
+        playRound(playerSelectionButton, getComputerChoice());
+        
+        });
+    });
 
         let compScore = 0;
         let playerScore = 0;
@@ -51,16 +62,11 @@
 
         }
 
-        function game() {
-            const playerSelectionfirst = window.prompt("Rock, Paper or Scissors?");
-            const playerSelection = playerSelectionfirst.toLowerCase();
-            console.log("The player input: " + playerSelection)
-            const computerSelection = getComputerChoice();
-            let outcome = playRound(computerSelection, playerSelection);
-            console.log(gameOutcome(playerScore, compScore));
-        }
+       
         
-        game();
+       
+        
+      
 
     </script>
 </body>
