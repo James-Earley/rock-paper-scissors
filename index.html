@@ -7,65 +7,100 @@
 <body>
     <div class="container">
         <div id="content">
+
+            <div id="scoreboard">
+                <div><h1>Scoreboard</h1></div>
+                <div id ="player"></div>
+                <div id ="computer"></div>
+                <div id="winner"></div>
+            </div>
+
                 <div class="buttons">
                   <button id="rock">Rock</button>
                   <button id="paper">Paper</button>
                   <button id="scissors">Scissors</button>
                 </div>
+                
               </div>
         </div>
     <script>
 
     const container = document.getElementById("content");
-
     const buttons = document.querySelectorAll('.buttons button');
+
+
+    const scoreboard = document.getElementById("scoreboard");
+    const playerPoints = document.getElementById("player");
+    const computerPoints = document.getElementById("computer");
+    const winner = document.getElementById("winner");
+
+
+    const compDiv = document.createElement('div');
+    const outcomeDiv = document.createElement('div');
+   
+   
+
+        let gameCount = 0;
+        let compScore = 0;
+        let playerScore = 0;
+        
 
     buttons.forEach(button => {
     button.addEventListener('click', event => {
         const playerSelectionButton = event.target.id;
-        console.log(playerSelectionButton);
         playRound(playerSelectionButton, getComputerChoice()); 
-        const newDiv = document.createElement('div')
-        newDiv.textContent = playerSelectionButton;
-        container.appendChild(newDiv);
+        gameOutcome(playerScore, compScore);
         });
     });
 
-    
 
         function getComputerChoice() {
             const arrayChoices = ["rock", "paper", "scissors"];
             const randomIndex = Math.floor(Math.random() * arrayChoices.length);
             const compChoice = arrayChoices[randomIndex];
-            console.log("The computer selects: " + compChoice);
+            container.appendChild(compDiv);
+            compDiv.textContent = "Computer selected: " + compChoice;
             return compChoice;
         }
         
-        let compScore = 0;
-        let playerScore = 0;
 
         function playRound(playerSelection, computerSelection) {  
                 if (computerSelection === playerSelection ){
-                    return console.log("Draw!");
+                    container.appendChild(outcomeDiv);
+                    outcomeDiv.textContent = "Draw"; 
                 } else if  ((computerSelection === 'rock' && playerSelection === 'scissors') ||
                             (computerSelection === 'scissors' && playerSelection === 'paper') ||
                             (computerSelection === 'paper' && playerSelection === 'rock')) {
-                            compScore++
-                            return console.log("Computer Wins");
+                            compScore++;
+                            container.appendChild(outcomeDiv);
+                            outcomeDiv.textContent = "Computer Wins"; 
                 } else {
-                    playerScore++
-                    return console.log("Player Wins");
+                    playerScore++;
+                    container.appendChild(outcomeDiv);
+                    outcomeDiv.textContent = "Player Wins"; 
                 }
+            
         }
 
         function gameOutcome(playerScore, compScore) {
-            if (playerScore > compScore) {
-                return "Player Wins overall!"
-            } else {
-                return "Computer Wins overall!"
-            }
-
+            if (playerScore < 5 && compScore < 5) {
+            scoreboard.appendChild(playerPoints);
+            playerPoints.textContent = "Player score " + playerScore;
+            scoreboard.appendChild(computerPoints);
+            computerPoints.textContent = "Computer score " + compScore;
+            } else if (playerScore == 5) {
+                playerPoints.textContent = "Player Wins!"
+            } else if (compScore == 5) {
+                computerPoints.textContent = "Computer Wins!" 
+             }
         }
+        
+
+        scoreboard.appendChild(computerPoints);
+        
+            console.log(compScore);
+            console.log(playerScore);
+        
 
        
         
